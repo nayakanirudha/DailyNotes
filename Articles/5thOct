@@ -1,0 +1,139 @@
+	1. Dealing with Imbalanced Classes in Machine Learning
+
+		- Often seen in Classification Problems
+		- One of the class is a minority ( <10% training instances ) 
+
+	Metrics : 
+		- Recall is given more importance than Precision
+		- Costly to miss a positive instance than to falsely label a negative instance
+		
+	Cost Sensitive Learning
+		- Usually there is no extra reward for identifying minority class over majority class
+		- Define Cost Function : C (A,B) , cost of misclassifying an instance of A as B
+		- This will increase the true positive rate
+		- Define the cost of penalization as inverse of class size, so high cost for smaller minority data set
+		
+	Sampling 
+		- Oversampling or Under sampling to get balanced dataset
+		- Oversampling Minority will lead to overfitting , too many duplicates in training
+		- Under sampling may drop important information which distinguishes the two.
+		- SMOTE creates synthetic instances by using convex optimization ( better than oversampling )
+
+	Anomaly Detection
+		- For extreme case we can think of classification problem as Anomaly detection
+		- Where majority classes follow Normal Distribution and Minority classes are treated as Outliers
+		- Models to use : Clustering, One-Class SVM, Isolation Forest
+	
+	2. Efficient Hyperparameter Optimization for XGBoost Model using Optuna
+
+		- Art of choosing the best hyperparameters for a learning algorithm
+		- Models have 2 types of parameters :
+		A) Model Parameters : Learned during training phase of model (eg. Coefficients of Multi Linear Regression )
+		B) Model Hyperparameter : Set by user before the training (eg. Learning Rate, number of hidden layers )
+		- Various method for Hyperparameter Optimization : Grid Search, Random Search, Optuna
+
+	Optuna :
+		- Uses Bayesian Methods
+		- Steps :
+			○ Define Objective Function 
+			○ Define Hyperparameter Search Space  : Integer, Categorical, Uniform, LogUniform
+			○ Study Objective :  A trial / Study / Parameter
+			○ Get best trial and results for all hyperparameter
+			○ Also get Trial History
+			○ Visualize the history for further info.
+
+	3. Comparing Different Classification Machine Learning Models for an imbalanced dataset
+
+	Data sets are unbalanced when at least one class is represented by only a small number of training examples (called the minority class) while other classes make up the majority. 
+
+	Classifier has good accuracy for majority class but poor accuracy for minority class.
+	Solution : Resample training dataset to maintain class balance, but resample only the training set and not validation or test.
+
+	Types of Resampling Techniques:
+		1. Under Sampling
+		2. Oversampling
+		3. SMOTE
+
+	ML Algorithm for classification :
+		1. Random Forest
+			○ Bootstrap Samples and Variables at each split
+			○ Build classification trees on those samples using the variables
+			○ Grow a large number of trees and than consider the average prediction of the forest for outcome
+		2. Gradient Boosting
+			○ Builds a series of Trees unlike Random forest which builds in parallel
+			○ Next tree corrects mistakes of previous trees
+			○ Making prediction is faster and takes less memory
+		3. Ada Boost
+			○ Iterative Ensemble
+			○ Builds strong classifier from multiple weak classifier
+			○ Each iterations the weights are set to ensure correct prediction of minority class
+			
+	Don't use Accuracy : Use Precision , Recall and F1 Scores
+
+	4. Demystifying Neural Networks: A Mathematical Approach (Part 1)
+
+	Simplifying a Predictor
+		- Provide a Truth table or Training data
+		- Algorithm estimates the value of constants and iterates over and over by adjusting the value of parameter based on how wrong the model is compared to true outcomes
+
+	Simplifying a Classifier and Multiple Classifier
+
+	Simplifying a Neural Network
+		- Neurons 
+		- Activation Function
+			○ Step Function
+			○ Sigmoid Function ( Faces Vanishing Gradient problem towards the extremes )
+			○ Hyperbolic Tan Function ( Same problem as Vanishing Gradient )
+			○ Rectified Linear Unit
+		- Modelling an Artificial Neuron
+
+	5. Teaching a Machine to Trade Stocks like Warren Buffett, Part I
+
+		- Technical Analysis
+		- Sentiment Analysis
+		- Fundamental Analysis
+
+	Using ML to classify if a stock is a Buy, Hold or Sell using Quarterly Data from Stockpup.com
+		- Examine the Quarterly Data
+		- Create Class Labels
+			○ Price went up by significant amt - buy
+			○ Price went low by significant amt - sell
+			○ Neither  - hold
+		- Transform Data as percentage change from previous quarters
+		- First and Last rows are excluded
+		- Combine Data frames from dictionaries of DF to feed to algorithm
+		- Reset index as dates are not required
+		- Exploring the data 
+			○ Visualizing the Count of classes
+			○ Visualize Correlation of classes with features
+		- Feature Selection
+			○ Selecting Top 10 features based on Correlation
+			○ Selecting Top 10 features based on Tree Classifier
+	
+	6. Best Ways to Improve Your Grasp of Statistics
+
+	Naked Statistics by Charles Wheelan
+	Khan Academy’s Statistics and Probability Courses
+
+	7. These Data Science Skills will be your Superpower
+
+	Hard Skills:
+		1. Math Skills
+		2. Programming Skills
+		3. Data Wrangling 
+		4. Data Preprocessing
+			a. Missing Data
+			b. Imputation
+			c. Categorical Data
+			d. Encoding
+			e. Feature Transformation 
+			f. Dimensionality Reduction
+		5. Data Visualization
+		6. ML Process
+		7. Real World Projects : Kaggle/Internships
+	Soft Skills :
+		1. Communication
+		2. Lifelong learner
+		3. Team Player
+		4. Business Acumen
+		5. Ethics
