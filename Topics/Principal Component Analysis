@@ -1,0 +1,131 @@
+Hands on ML with Scikit Learn and Tensorflow  (Chapter - 8)
+
+Curse of Dimensionality :
+	- For each training instance  : Millions of features
+	- Training is too slow
+	- Finding a good solution is difficult
+	- High dimensional data are at a risk of being sparse
+	- More Dimension is More risk of Overfitting
+
+Approaches for Reducing Dimension 
+A) Projection : This is using the assumption that many features are constant or highly correlated with each other.
+This cant be applied to subspace which twist and turn eg. Swiss Roll
+B) Manifold Learning : Based on assumption that Most real world high dimensional dataset can be modelled to a much lower dimensional manifold.
+Though reducing dimension through manifold can reduce the training time but doesn't guarantee best solutions after training.
+
+
+PCA : Identifies the hyperplane closest to the data -> projects the data onto it
+
+A) Choosing the correct Hyperplane
+Select the one which preserves the maximum variance
+
+B) Principal components 
+Axis of highest variance is identified, then the next axis which is orthogonal to first axis is identified and so on.
+
+C) Finding Principal Components
+Using Singular Vector Decomposition, a matrix can be broken into 3 components : U , sigma , Transpose ( V )  ( np.linalg.svd )
+Transpose ( V ) contains the principal components
+
+Note : sklearn PCA takes care of centring the data around origin, if not using it, centre the data yourself
+
+D) Projecting the data
+Compute dot product of Training Datset with 
+Wd ( First d components of transpose (V))
+
+Explained Variance Ratio : Proportion of datasets variance that lies along each axis 
+
+Choosing the dimension : Try to capture total of 95% of the variance of the dataset
+
+Incremental PCA :
+	- SVD calculation requires whole of training set to fit in memory 
+	- Instead split training into batches and feed to the IPCA algorithm
+
+Randomized PCA : 
+	- Quickly finds an approximation of the first d components using stochastic algorithm
+
+Kernel PCA :
+	- A technique to map instance into a high dimensional space enabling non linear classification.
+
+LLE ( Locally Linear Embedding ) :
+	- Uses Manifold Learning
+	- First learns how each training instance linearly relates to closest neighbours
+	- Then it finds lower dimension where this can be preserved
+
+Understanding PCA (Principal Components Analysis)
+
+Variance is both our friend and an enemy :
+Enemy - More Variance is harder to predict or explain
+Friend -  To build a good model, we need features with nonzero covariance 
+
+PCA helps in finding the ideal set of feature required to explain the data. Ideal set of features will have follwoing 3 properties
+	1. High Variance 
+	2. Uncorrelated (High Correlation causes Multicollinearity )
+	3. Not that many
+
+How does PCA work ?
+	1. Find the strongest underlying trend
+	2. Find second strongest trend which is uncorrelated with first trend.
+	3. Keep calculating till 95% of the variance can be expressed by projecting the data on these orthogonal components
+
+Without domain expertise, we lose a lot of interpretability of the model.
+
+A One-Stop Shop for Principal Component Analysis
+
+2 main ways to achieve Dimensionality Reduction :
+A) Feature Elimination - Drop the features to reduce feature space, but we eliminate any benefits those dropped feature would bring
+B) Feature Extraction - Developing new features as combination of old features to reduce dimension and drop those new features which contributes the least. ( old features are still present in other new variables )
+
+When PCA ?
+	- Want to reduce variables but not able to identify which ones ?
+	- Do you want to ensure independence between variables
+	- Are you okay with less interpretability ?
+
+How PCA works ?
+	- Calculate a matrix which summarizes variable relations
+	- Break the matrix into Direction and Magnitude
+	- Transform the original data to align with the direction of vectors ordered by their importance/magnitude 
+
+Steps :
+	- Seperate dependent and independent variables into X and Y
+	-  Centre each variable around its mean
+	-  Decide on whether or not to standardize ? Do it if the importance (magnitude) is independent o of the variance. ( Z be the transformed Matrix )
+	- Calculate the covariance matrix  : Transpose ( Z ) * Z
+	- Calculate the eigenvalues and eigen vectors of covariance matrix  : Using Eigen Decomposition 
+	First matrix gives Eigen Vectors and Second matrix gives Eigen Values as Diagonal elements
+	- Sort Eigen Vectors based on Eigen Values in decreasing manner and select 'd' columns (Call this Px vector )
+	- Calculate the dot product :  Z * Px ( data in transformed space )
+	- Since Eigen Vectors are independent , the new features in transformed space will be orthogonal and independent
+
+Methods to determine number of features to keep/drop:
+	1. Pick an arbitrarily number of dimensions
+	2. Pick a threshold of variance explained by set of eigen vectors, and drop the rest
+	3. Calculate variance explained by each feature and construct a scree plot to get cumulative proportion of variance explained and find the elbow
+
+Why does it work ?
+	- Covariance Matrix captures how each variable is associated with other
+	- Eigen Vectors gives direction and Eigen Values gives importance of each direction
+	- Lots of variability in one direction is signal and less variability in other is noise
+
+Extensions used : Principal Component Regression and Kernel PCA
+
+
+
+Implementation of PCA in Python follows the following steps :
+
+	1. Standardize and Normalize the data.
+	2. Compute the covariance matrix of the features from the dataset.
+	3. Perform eigen decomposition on the covariance matrix. ( Alternate use of SVD )
+	4. Order the eigenvectors in decreasing order based on the magnitude of their corresponding eigenvalues.
+	5. Determine k, the number of top principal components to select.
+	6. Construct the projection matrix from the chosen number of top principal components.
+	7. Compute the new k-dimensional feature space.
+
+Link References :
+	1. A Step-By-Step Introduction to PCA
+	2. A Complete Guide to Principal Component Analysis — PCA in Machine Learning
+	3. Implementing PCA in Python
+	4. Python Documentation for PCA within the sklearn library
+	5. PCA Explanation on AnalyticsVidhya
+
+Detailed ( Go through when you have Time )
+A Tutorial on Principal Components Analysis
