@@ -1,0 +1,95 @@
+1. Your Ultimate Python Visualization Cheat-Sheet
+
+	Steps to creating a visualization
+		• Prepare data accordingly with how many dimensions your plot has 
+		• Initiate the graph world and aesthetics, like style or palette.
+		• Create the plot.
+		• Customize the plot with titles, labels, and additional features.
+
+		1. Create a figure
+			a. plt.figure(figsize=(horizontal_length,vertical_length))
+		2. Seaborn Styles 
+			a. sns.set_style(name_of_style)
+		3. Seaborn Contexts
+			a. sns.set_context(name_of_context)
+		4. Seaborn Color Palettes
+			a. sns.set_palette('a string deliberately entered to get an error')
+			b. sns.palplot(sns.color_palette('GnBu', 15))
+		5. Creating the plot :
+			a. Distribution plots:
+				i. Distplot
+				ii. Rugplot
+				iii. Kdeplot
+				iv. Jointplot
+				v. Pairplot
+			b. Quantitative vs Qualitative
+				i. Boxplot
+				ii. Stripplot
+				iii. Violinplot
+				iv. Swarmplot
+				v. Boxenplot
+				vi. Pointplot
+				vii. Barplot
+				viii. Countplot
+			c. Models 
+				i. Residplot
+				ii. Lmplot
+				iii. Lmplot for logistic
+		6. Customize the plot
+			a. X and Y labels 
+			b. Title Label
+			Tick Mark Rotation : plt.xticks(rotation=90
+			c. Axis Range : plt.xlim(lower_limit, upper_limit)
+			d. Displaying the plot
+
+2. Scikit-Learn (Python): 6 Useful Tricks for Data Scientists
+
+		1. Generate Random Dummy Data
+		- When you want to test out your model on a small dataset and debug it further
+		- Use make_classification()  and make_regression()
+		2. Impute Missing Values 
+		- SimpleImputer and KNNImputer
+		3. Use Pipeline to chain steps
+		4. Use joblib to save pipeline model
+		5. Plot Confusion Matrix
+		- Use plot_confusion_matrix()
+		6. Visualize Decision Trees
+		- Use plot_tree function	
+
+3. The Hidden Gems of Python – Libraries that make Data Science a Cakewalk
+
+		1. Pandas_ML : sklearn + xgboost +matplotlib
+		2. Dash : Based on Plotly.js + Flask + React : Used for interactive ML and Data Science web app
+		3. Yellow Brick - Helps with Model Interpretability ,  Feature Selection , Tuning HP , Comparing Models
+		4. Dabl - Automating Data Preprocessing 
+		5. Pycaret - Compare and Find the best model 
+		6. Prophet - Time Series Forecasting
+		7. PyFlux - Pycaret for Time Series Forecasting
+		8. Category-Encoders - Easy Category Encoding
+		9. Surprise - Automating Building Recommendation System
+		10. FlashText -  Efficient NLP Helper
+
+4. Confusion Matrix Is No More A Confusion for Data Science Aspirants!
+
+	True Positives : Claim +  and Actual +
+	True Negatives : Claim -  and Actual -
+	False Positives : Claim +  and Actual -         (Type 1 error)
+	False Negatives : Claim -  and Actual +       (Type 2 error)
+
+	Accuracy 
+		- Total Correct Predictions / Total Predictions
+		- Should be considered when TP and TN are more important
+		- Applied on Balanced Dataset
+
+	Precision
+		- True Positives / Total Actual Positives 
+		- Used when we need to decrease the False Positives / Type 1 Error
+		
+	Recall 
+		- True Positives / Total Predicted Positives
+		- Used when we need to decrease the False Negatives / Type 2 Error
+		
+	F Beta Score 
+		F1 Score  -  Both FP and FN are equally important
+		F0.5 Score  - More weight to Precision than to Recall ( FN)
+		F2 Score - More weight to Recall than to Precision (FP)
