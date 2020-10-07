@@ -1,0 +1,85 @@
+By Alexander Amini
+
+Artificial Intelligence
+	- Building Algo that can process inform future decisions
+Machine Learning
+	- Teaching an Algo without explicitly programming
+Deep Learning
+	- Automatically extract useful info from data 
+
+	1. Why DL ? Why now?
+
+ML - Find rules in data and then Hand Engineer to get all features
+	- Time Consuming, not scalable
+
+DL - Learn the feature from raw data 
+	- Data is widely available
+	- Computation Power has increased
+	- Open Source Community to support building and deploying model
+
+	2. Perceptron
+
+Forward Propagation :               Y = g(w + Xt * W)
+	- Inputs and Weights -  Linear Combination   
+	- Feed it to non linear activation function
+	- Add a Bias term ? Helps shifting function left and right 
+	- Activation ? To introduce non linearity into network  
+	( Input to it is linear ( a line, plane or higher dimensional linear combination)   
+	- Based on where the test set lies wrt to linear function , the activation function will give out the probability
+	Eg Sigmoid  ( Real numbers as  Input and gives out value 0 to 1 ,  tanh,  relu )
+
+	3. Neural Network with Perceptron
+
+	- For Multioutput perceptron
+	Connect all inputs to all outputs of perceptrons 
+	Number of perceptron is determined by number of perceptron
+	This is called as Dense Layers
+	- Single Layer Neural Network 
+	Contains a Hidden Layer , weights are not accessible directly
+	- Deep Layer
+	Multiple  hidden layers
+
+	4. Applying Neural Networks
+
+Will I pass this class = f( lecture attended, hours on project)
+2 inputs 1 hidden layer 1 output
+Train the model -  
+Tell model when its wrong - loss function
+	- Total loss function / Cost Function / Objective Function 
+	( Compare prediction and results )
+	For classification (pass/fail) -  Softmax Cross Entropy loss 
+For regression (to predict grades) - Mean Squared Error Loss
+
+	5. Training Neural Networks
+
+	- Loss Optimization -  Find optimal weights to achieve least loss
+	Loss function is a function of network weights
+	- Pick a random place -  move to global minima
+	- Find gradient and start moving in opposite direction - Gradient Descent (steps taken is learning rate)
+	- Update the weights after every step 
+
+	6. Backpropagation
+
+Partial derivative of loss function( wrt last weight) will get how small change of weight will effect small change in loss function and then keep going back to understand how all weights change
+
+	7. Optimization
+	
+	Setting small learning rate -  stuck in local minima
+	Setting large - diverge from minima
+	- How to set it ? LR which adapts to landscape - Its no longer fixed
+Adaptive learning rate eg. SGD, Adam, Adadelta, adagrad, RMSprop
+
+	8. MiniBatches
+	
+	- GD is computationally expensive -  all of data point is used
+	- Instead pick a batch of point - > Compute Gradient by averaging over all batch -> update weights -> choose different batch
+	- Advantage-smoother convergence, more confidence on learning rate, parallelize computaiton 
+
+	9. Overfitting
+	
+	- Problem of generalization
+	- Build models learn representations from training data to generalize test data
+	- Regularization ? Discourage Overfitting or memorizing and increase generalization
+
+	- Dropouts -  During training drop outputs particular perceptron based on probability over each iteration
+	- Early Stopping - Stop training when chance of overfit, before loss of training and testing diverges
