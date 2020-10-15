@@ -1,0 +1,46 @@
+Alexander Amini
+
+Facial Detection and Recognition
+Self Driving Cars
+Medicine Biology and Healthcare
+
+What Computers See?
+
+Images are numbers , Pixels -> Matric of 2D
+High level Feature Extraction 
+Manual ? Domain Knowledge + Define Feature + Detect Feature
+Automatic ? Learn hierarchy of features directly from data 
+
+Learning Visual Features
+
+Dense Neural Network -  Fully Connected Neural Networks
+2D Image -> 1D Vector (Loss of spatial information so not feasible)
+Can we put spatial structure in Neural Networks ?
+Connect a patch of input to neurons
+Slide the window over the image
+Patchy operation is called Convolution 
+
+Feature Extraction and Convolution
+
+Pass the filter over a patch
+Element wise multiply patch with filter and add outputs
+Closer the patch matches filter , higher the output
+
+CNN
+
+Feature Learning - Convolution -> Non Linearity -> Pooling(Down Sampling)
+	- Apply window of weights
+	- Compute linear combination (along with bias)
+	- Activate non linear function
+	- Output will be a volume of image and each sheet of that volume is the output obtained after passing the image over 1 filter. Depth of Volume will be number of filters
+	- Apply non linearity (ReLU)
+	- Max Pool ( Max in Patch ) to reduce dimensionality and Spatial Invariance - Any Alternatives ?
+	- Flatten the Volume
+	- Feed it to the Dense Layer which will use Softmax to give out a class.
+	
+Applications
+
+Breast Cancer Screening 
+Semantic Segmentation 
+Bio Medical Image Analysis
+Navigation from Visual Perception
